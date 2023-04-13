@@ -36,30 +36,30 @@ const { ListNode } = require('../extensions/list-node.js');
 //   }, null);
 // }
 
-//     const list = convertArrayToList([4, 3, 2]);
-//     let k = 3
+// const list = convertArrayToList([3, 3, 2]);
+// let k = 3
 // console.log(list);
 
 function removeKFromList(list, k) {
   // throw new NotImplementedError('Not implemented');
-  if (list.value === k) {
-    list = list.next
-  }
-  let tmp = list
-  let prev = null
-  while (tmp) {
-    if (tmp.value === k) {
-      prev.next = tmp.next
-    } else {
-      prev = tmp;
+  let corent = list
+  let previus = null
+  while (corent) {
+    if (corent.value === k) {
+      if (previus === null) {
+        list = list.next
+      } else {
+        previus.next = corent.next;
+      }
     }
-    tmp = tmp.next
+    else {
+      previus = corent
+    }
+    corent = corent.next
   }
   return list
 }
-
-// console.log(removeKFromList(list , k));
-
+// console.log(removeKFromList(list, k));
 module.exports = {
   removeKFromList
 };
